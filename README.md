@@ -2,6 +2,7 @@
 * [General Info](#general-info)
 * [Description](#description)
 * [Technologies](#technologies)
+* [DataModel](#datamodel)
 * [Setup](#setup)
 * [Execution](#execution)
 * [References](#references)
@@ -16,6 +17,9 @@ Flask-SQLAlchemy is the Flask extension that adds support for SQLAlchemy. Most p
 
 Project is created using Flask-SQLALchemy with MYSQL as Database for storing data. Models are created for Customer, Employees, BankAccount and CreditCard. All the tables are populated using flask-sqlalchemy library functions. User is prompted to enter the Customer ID and option to deposit and withdraw from the Bank Account
 
+
+##DataModel
+![Alt text](/screenshot/DataModel.PNG?raw=true "Data Model")
 
 ## Technologies
 Project is created with:
