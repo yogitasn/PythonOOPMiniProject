@@ -1,11 +1,13 @@
 ## Table of contents
-* [General info](#general-info)
+* [General Info](#general-info)
 * [Description](#description)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Execution](#execution)
+* [References](#references)
+* [Future Work/Enhancements](#Enhancements)
 
-## General info
+## General Info
 This project is python bank application using OOP mini project.
 
 ## Description
@@ -49,3 +51,9 @@ DATABASE=
 python __main__.py
 
 ```
+
+## References
+[Flask SQLALchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
+
+## Future Work/Enhancements
+Due to time constraint and execution errors unable to implement the relationships while declaring models. To include in future work.
