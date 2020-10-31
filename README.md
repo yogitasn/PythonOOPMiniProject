@@ -19,7 +19,7 @@ Project is created using Flask-SQLALchemy with MYSQL as Database for storing dat
 
 
 ## DataModel
-![Alt text](/screenshot/DataModel.PNG?raw=true "Data Model")
+![Alt text](/screenshot/datamodel/DataModel.PNG?raw=true "Data Model")
 
 ## Technologies
 Project is created with:
