@@ -8,7 +8,7 @@ logging.basicConfig(format='%(asctime)s :: %(levelname)s :: %(funcName)s :: %(li
 :: %(message)s', level = logging.INFO)
 
 config = configparser.ConfigParser()
-config.read('../bankapplication/database.cfg')
+config.read('database.cfg')
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{}:{}@localhost:{}/{}'.format(*config['DATABASE'].values())
 db = SQLAlchemy(app)
