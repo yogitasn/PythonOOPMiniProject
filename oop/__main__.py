@@ -6,7 +6,6 @@ from CreditCard import CreditCard
 
 def populate_database():
     """Populate the database."""
-
     emp=Employees(123456,'Sammy','Retail Applications','IT Analyst')
     emp1=Employees(5678,'Nancy','Capital Market','Teller')
     emp.create_employees()
@@ -34,11 +33,13 @@ def populate_database():
     creditCard1=CreditCard('Mr','Sam','Rogers','15 Upland St, Toronto',8999666,'Aug',2021,'127','Visa','CAD')
     creditCard1.create_Credit_Account()
 
+
 def main():
     populate_database()
     while True:
          try:
             # To Test please use 123,5678 or 6788
+            
             customer_id=input("Please enter customer ID: ")
             if not customer_id:
                 break

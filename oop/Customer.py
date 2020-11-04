@@ -21,7 +21,7 @@ class Customer(db.Model):
     email = db.Column(db.String(50), nullable=False)
     phone = db.Column(db.String(50), nullable=False)
     name = db.Column(db.String(50), nullable=False)
-   
+    #BankAccount = db.relationship('BankAccount', backref='customer', lazy=True)
  
     def __init__(self, cust_id, name,email,phone):
         """ 

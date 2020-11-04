@@ -36,15 +36,21 @@ $ pip install Flask-SQLAlchemy
 $ pip install PyMySQL
 
 ```
+Run the following SQL command  
 
-To update the configuration file 'database.cfg' with your database credentials. Create a database (i.e. create database test) before running the project and pass the value in config file
+```
+create database <DB_NAME>
+
+```
+
+To update the configuration file 'database.cfg' with your database credentials and DB name created in above step.
 
 ```
 [DATABASE]
 DB_USER=
 DB_PASSWORD=
 DB_PORT=
-DATABASE=
+DATABASE=<DB_NAME>
 
 ```
 

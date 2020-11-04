@@ -17,10 +17,11 @@ class BankAccount(db.Model):
     __tablename__ = "bankaccount"
 
     bank_acc_no = db.Column(db.Integer, primary_key=True)
-    cust_id = db.Column(db.Integer, primary_key=True)
+    cust_id = db.Column(db.Integer,nullable='False')
     actnType= db.Column(db.String(50),nullable='False') 
     money= db.Column(db.Float,nullable='False') 
     penalty_amount = 5
+    
 
 
 
