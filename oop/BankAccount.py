@@ -69,13 +69,15 @@ class BankAccount(db.Model):
         Returns:
                Balance: The new balance amount
         """
+        try:
+            bankAcc = BankAccount.query.filter_by(cust_id=self.cust_id).first()
+            logging.info('Previous Balance is : {} '.format(bankAcc.money))
+            bankAcc.money=bankAcc.money+amount
+            db.session.commit()
+            logging.info('New Balance is : {} '.format(bankAcc.money))
+        except AttributeError:
+            logging.info('Customer ID: \'{}\' doesn\'t exists. Try Again!'.format(cust_id))
         
-        bankAcc = BankAccount.query.filter_by(cust_id=self.cust_id).first()
-        logging.info('Previous Balance is : {} '.format(bankAcc.money))
-        bankAcc.money=bankAcc.money+amount
-        db.session.commit()
-        logging.info('New Balance is : {} '.format(bankAcc.money))
-
 
     def withdraw(self,cust_id,amount):
         """      
@@ -89,19 +91,20 @@ class BankAccount(db.Model):
         Returns:
                Balance: The new balance amount
         """
-    
-        bankAcc = BankAccount.query.filter_by(cust_id=cust_id).first()
-        logging.info('Previous Balance is : {} '.format(bankAcc.money))
-     
-        if bankAcc.money - amount < 0:
-            logging.warn('The account balance is less than zero')
-            bankAcc.money -= (amount + BankAccount.penalty_amount)
-            bankAcc.money += BankAccount.penalty_amount
+        try:
+           bankAcc = BankAccount.query.filter_by(cust_id=cust_id).first()
+           logging.info('Previous Balance is : {} '.format(bankAcc.money))
 
-        else:
-            bankAcc.money -= amount
-        logging.info('New Balance is : {} '.format(bankAcc.money))
-     
+           if bankAcc.money - amount < 0:
+              logging.warn('The account balance is less than zero')
+              bankAcc.money -= (amount + BankAccount.penalty_amount)
+              bankAcc.money += BankAccount.penalty_amount
+
+           else:
+              bankAcc.money -= amount
+              logging.info('New Balance is : {} '.format(bankAcc.money))
+        except AttributeError:
+              logging.info('Customer ID: \'{}\' doesn\'t exists. Try Again!'.format(cust_id))
         db.session.commit()
         
 

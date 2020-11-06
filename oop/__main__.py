@@ -40,7 +40,7 @@ def main():
          try:
             # To Test please use 123,5678 or 6788
             
-            customer_id=input("Please enter customer ID: ")
+            customer_id=input("Please enter customer ID, Use Cust_id=123 or 5678 or 6788: ")
             if not customer_id:
                 break
             choice=int(input("Please enter 1-Deposit or 2-Withdraw: "))
