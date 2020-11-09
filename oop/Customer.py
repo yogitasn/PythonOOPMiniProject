@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from BankAccount import BankAccount
 import logging
 import configparser
+from sqlalchemy.exc import OperationalError
+import sys
 
 logging.basicConfig(format='%(asctime)s :: %(levelname)s :: %(funcName)s :: %(lineno)d \
 :: %(message)s', level = logging.INFO)
@@ -81,7 +83,11 @@ class Customer(db.Model):
         Returns:
                None
         """
-        db.create_all()
+        try:
+           db.create_all()
+        except OperationalError as e:
+           logging.error(getattr(e, 'message', repr(e)))
+           sys.exit(1)
         cust=Customer(self.cust_id,self.name,self.email,self.phone)
         logging.info('New Customer Created Id:{} name:{} email:{} phone:{} '.format(self.cust_id,self.name,self.email,self.phone))
         db.session.add(cust)

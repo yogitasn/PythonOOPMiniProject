@@ -24,6 +24,7 @@ def populate_database():
     bank_Acc1=BankAccount(567888,5678,'Saving',200)
     bank_Acc1.create_Bank_Account()
 
+
     bank_Acc2=BankAccount(1677777,6788,'Chequing',400)
     bank_Acc2.create_Bank_Account()
 
@@ -38,8 +39,7 @@ def main():
     populate_database()
     while True:
          try:
-            # To Test please use 123,5678 or 6788
-            
+            # To Test please use 123,5678 or 6788  
             customer_id=input("Please enter customer ID, Use Cust_id=123 or 5678 or 6788: ")
             if not customer_id:
                 break

@@ -2,11 +2,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import logging
 import configparser
-#from sqlalchemy.ext import OperationalError
 import traceback
-#from pymysql.err import OperationalError
 from sqlalchemy.exc import OperationalError
-#
+import sys
+
 logging.basicConfig(format='%(asctime)s :: %(levelname)s :: %(funcName)s :: %(lineno)d \
 :: %(message)s', level = logging.INFO)
 
@@ -78,7 +77,8 @@ class Employees(db.Model):
         try:
            db.create_all()
         except OperationalError as e:
-           logging.error("Database Error")
+           logging.error(getattr(e, 'message', repr(e)))
+           sys.exit(1)
         e=Employees(emp_id=self.emp_id,name=self.name,department=self.department,title=self.title)
         logging.info('New Employee Created Id:{} name:{} department:{} title:{} '.format(self.emp_id,self.name,self.department,self.title))
         db.session.add(e)

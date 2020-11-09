@@ -2,6 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import logging
 import configparser
+from sqlalchemy.exc import OperationalError
+import sys
 
 logging.basicConfig(format='%(asctime)s :: %(levelname)s :: %(funcName)s :: %(lineno)d \
 :: %(message)s', level = logging.INFO)
@@ -62,7 +64,11 @@ class CreditCard(db.Model):
         Returns:
                None
         """
-        db.create_all()
+        try:
+           db.create_all()
+        except OperationalError as e:
+           logging.error(getattr(e, 'message', repr(e)))
+           sys.exit(1)
         credit_card=CreditCard(self.title,self.first_name,self.last_name,self.address,self.card_number,self.expiration_month,self.expiration_year,self.security_code,self.card_type,self.currency_code,self.beginning_balance,self.account_balance,self.charges,self.overdraft_fees,self.payments,self.ending_balance)
         logging.info('New Credit Card Account created : Card Number {}'.format(self.card_number))
         db.session.add(credit_card)
